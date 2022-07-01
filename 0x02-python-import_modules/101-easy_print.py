@@ -1,2 +1,2 @@
 #!/usr/bin/python
-input('#pythoniscool')
+input('\n#pythoniscool')
