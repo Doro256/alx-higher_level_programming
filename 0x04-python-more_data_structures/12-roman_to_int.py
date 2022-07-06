@@ -13,3 +13,6 @@ def roman_to_int(roman_string):
             num += roman_dict[roman_string[i]]
             i += 1
     return (num)
+    
+    if not roman_string and not type(roman_string) is str:
+        return 0
