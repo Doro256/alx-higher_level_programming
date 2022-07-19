@@ -8,8 +8,12 @@ class Square:
     __size = None
 
     def __init__(self, size=0):
-        """Initialize class"""
-        if size != int(size):
+        """Initialize class
+
+        Agrs:
+            size (int): Size of the new square
+        """
+        if not isinstance int(size, int):
             raise TypeError("Size must be an integer")
         if size < 0:
             raise ValueError("Size must be >= 0")
