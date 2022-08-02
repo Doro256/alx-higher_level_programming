@@ -2,7 +2,7 @@
 """ A module that appends a string at the end of a text file """
 
 
-def write_file(filename="", text=""):
+def append_file(filename="", text=""):
     """ A method that appends a string to a text file (UTF8) and
     returns the number of characters added
     """
