@@ -77,7 +77,11 @@ class Rectangle(Base):
 
     def display(self):
         """ To print to stdout the Recangle instance with # """
+        for k in range(self.y):
+            print()
         for i in range(self.height):
+            for z in range(self.x):
+                print(" ", end="")
             for j in range(self.width):
                 print('#', end='')
             print()
