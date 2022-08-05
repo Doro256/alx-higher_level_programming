@@ -88,4 +88,30 @@ class Rectangle(Base):
 
     def __str__(self):
         """ Returns Rectangle object as string """
-        return f'[Rectangle] ({self.id}) {self.x}/{self.y} - {self.width}/{self.height}'
+        return "[Rectangle] ({}) {}/{} - {}/{}".format(self.id, self.x, self.y,
+                                                       self.width, self.height)
+
+    def update(self, *args, **kwargs):
+        """ Assigns an argument to each attribute """
+        try:
+            self.id = args[0]
+            self.width = args[1]
+            self.height = args[2]
+            self.x = args[3]
+            self.y = args[4]
+        except IndexError:
+            pass
+
+        if "id" in kwargs:
+            self.id = kwargs["id"]
+        if "width" in kwargs:
+            self.width = kwargs["width"]
+        if "height" in kwargs:
+            self.height = kwargs["height"]
+        if "x" in kwargs:
+            self.x = kwargs["x"]
+        if "y" in kwargs:
+            self.y = kwargs["y"]
+
+        return {"id": self.id, "width": self.width, "height": self.height,
+                "x": self.x, "y": self.y}
