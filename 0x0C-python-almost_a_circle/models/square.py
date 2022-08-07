@@ -2,6 +2,9 @@
 """ A square module """
 
 
+from base import Base
+
+
 class Square(Rectangle):
     """ A Square class """
     def __init__(self, size, x=0, y=0, id=None):
