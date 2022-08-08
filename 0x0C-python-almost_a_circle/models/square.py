@@ -2,7 +2,7 @@
 """ A square module """
 
 
-from base import Base
+from models.rectangle import Rectangle
 
 
 class Square(Rectangle):
