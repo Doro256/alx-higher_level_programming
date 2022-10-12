@@ -19,8 +19,8 @@ if __name__ == "__main__":
     session = Session()
 
     first_state = session.query(State).order_by(State.id).first()
-    try:
+    if first_state:
         print("{}: {}".format(state.id, state.name))
-    except:
+    else:
         print("Nothing")
     session.close()
