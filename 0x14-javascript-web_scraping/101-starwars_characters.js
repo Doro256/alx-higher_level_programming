@@ -1,33 +1,32 @@
 #!/usr/bin/node
-// A script that prints the number of movies where the character “Wedge Antilles” is present
+
+function order (characters, idx) {
+  if (idx >= characters.length) {
+    return;
+  }
+  request(characters[idx], function (err, response, body) {
+    if (err) {
+      console.log(err);
+    } else if (response.statusCode === 200) {
+      const person = JSON.parse(body);
+      console.log(person.name);
+      return order(characters, ++idx);
+    } else {
+      console.log('error ocurred, Status code: ' + response.statusCode);
+    }
+  });
+}
 
 const request = require('request');
-const url = 'http://swapi.co/api/films/' + process.argv[2];
-
-let filmChars = [];
-const charNames = {};
-request({ url: url, json: true }, (err, res) => {
+const url = 'https://swapi-api.hbtn.io/api/films/';
+const ep = process.argv[2];
+request(url + ep, function (err, response, body) {
   if (err) {
-    console.error(err);
+    console.log(err);
+  } else if (response.statusCode === 200) {
+    const jsobj = JSON.parse(body);
+    order(jsobj.characters, 0);
   } else {
-    filmChars = res.body.characters;
-    for (const index of filmChars) {
-      request(index, { json: true }, (err, res) => {
-        if (err) {
-          console.log(err);
-        }
-        getName(index, res.body.name);
-      });
-    }
+    console.log('error ocurred, Status code: ' + response.statusCode);
   }
 });
-
-// function that prints the name of each characters
-function getName (url, name) {
-  charNames[url] = name;
-  if (Object.entries(charNames).length === filmChars.length) {
-    for (const idx of filmChars) {
-      console.log(charNames[idx]);
-    }
-  }
-}
